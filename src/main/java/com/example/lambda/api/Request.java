@@ -9,22 +9,12 @@ package com.example.lambda.api;
  * @link http://docs.aws.amazon.com/lambda/latest/dg/java-handler-io-type-pojo.html
  */
 public class Request {
-    private String global_tracking_id;
-
     private String message;
-
-    public void setGlobalTrackingId(String global_tracking_id) {
-        this.global_tracking_id = global_tracking_id;
-    }
 
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public String getGlobalTrackingId() {
-        return global_tracking_id;
-    }
-
+    
     public String getMessage() {
         return message;
     }

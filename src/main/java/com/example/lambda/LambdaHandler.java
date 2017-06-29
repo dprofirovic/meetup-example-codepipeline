@@ -23,7 +23,4 @@ public class LambdaHandler {
 
         return new Response(application.toString());
     }
-
-
-
 }
