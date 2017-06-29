@@ -27,3 +27,13 @@ dependencies {
     testCompile group: 'junit',                 name: 'junit',                          version: '4.12'
     testCompile group: 'findbugs',              name: 'findbugs',                       version: '1.0.0'
 }
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip

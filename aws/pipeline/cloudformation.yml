@@ -178,7 +178,7 @@ Resources:
                         - mkdir output
                         - cp -R aws output
                         - cp buildInfo.json output/
-                        - cp ./build/libs/src.jar output/
+                        - unzip ./build/distributions/*.zip -d ./output/
                   artifacts:
                     files:
                       - ./**/*

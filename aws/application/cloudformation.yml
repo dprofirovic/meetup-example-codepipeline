@@ -6,7 +6,7 @@ Parameters:
   ApplicationName:
     Description: Name of the lambda function.
     Type: String
-    Default: "application"
+    Default: "meetup-example-codepipeline"
 
   ApplicationVersion:
     Description: Version of the application.
