@@ -139,7 +139,6 @@ Resources:
                                 StackName: {"Fn::Join": ["-", [{"Ref" : "ApplicationName"}, "stack" ]]}
                                 OutputFileName: output.json
                                 TemplatePath: build::aws/application/cloudformation.yaml
-                                TemplateConfiguration: build::aws/application/parameters.json
                                 ParameterOverrides: |
                                     {
                                         "ApplicationBuildS3Bucket" : { "Fn::GetArtifactAtt" : ["Built", "BucketName"]},
