@@ -31,3 +31,23 @@ Services Used:
 3. Log into AWS Console 
 4. Under Cloudformation, create stack by choosing a template and uploading it to Amazon S3. The cloudformation template is located in /aws/pipeline/cloudformation.yml
 5. Fill out the cloudformation create stack form with your details
+
+# Testing
+
+Once the pipeline has concluded the 'Staging' stage, you will have a new Lambda called 'meetup-example-codepipeline'. 
+
+Invoke the Lambda with the following json
+
+```
+{
+  "message": "AWSome"
+}
+```
+
+The expected result is 
+
+```
+{
+  "message": "Echoing message: AWSome"
+}
+```
