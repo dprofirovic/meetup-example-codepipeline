@@ -1,0 +1,66 @@
+Description: >
+
+    This CloudFormation template will create a Lambda application on the Java8 environment
+
+Parameters:
+  ApplicationName:
+    Description: Name of the lambda function.
+    Type: String
+    Default: "application"
+
+  ApplicationVersion:
+    Description: Version of the application.
+    Type: String
+    Default: "0"
+
+  ApplicationBuildS3Bucket:
+    Description: Location of the Lambda function in S3.
+    Type: String
+
+  ApplicationBuildS3ObjectKey:
+    Description: S3 Key of the Lambda function.
+    Type: String
+
+
+Resources:
+  Lambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Ref ApplicationName
+      Code:
+        S3Bucket: !Ref ApplicationBuildS3Bucket
+        S3Key: !Ref ApplicationBuildS3ObjectKey
+      Handler: 'com.example.lambda.LambdaHandler::execute'
+      Runtime: java8
+      Timeout: 60
+      MemorySize: 1024
+      Role: !GetAtt IAMRole.Arn
+
+  #
+  # Roles
+  #
+  IAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+      - PolicyName: {"Fn::Join": ["-", [{"Ref" : "ApplicationName"}, "policy" ]]}
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource:
+            - "*"
