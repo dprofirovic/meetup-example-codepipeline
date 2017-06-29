@@ -138,7 +138,7 @@ Resources:
                                 RoleArn: !GetAtt [CodePipelineCloudFormationRole, Arn]
                                 StackName: {"Fn::Join": ["-", [{"Ref" : "ApplicationName"}, "stack" ]]}
                                 OutputFileName: output.json
-                                TemplatePath: build::aws/application/cloudformation.yaml
+                                TemplatePath: build::aws/application/cloudformation.yml
                                 ParameterOverrides: |
                                     {
                                         "ApplicationBuildS3Bucket" : { "Fn::GetArtifactAtt" : ["Built", "BucketName"]},
