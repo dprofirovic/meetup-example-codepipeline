@@ -171,7 +171,8 @@ Resources:
                   phases:
                     build:
                       commands:
-                        - gradle build
+                        - chmod u+x gradlew
+                        - ./gradlew clean build
                     post_build:
                       commands:
                         - echo Create output folder for cloudformation templates...
